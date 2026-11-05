@@ -1,78 +1,81 @@
+const notaResetVersion = "fresh-start-1";
+
+if (localStorage.getItem("notaResetVersion") !== notaResetVersion) {
+
+    const oldData = [
+        "users",
+        "loggedInUser",
+        "jobs",
+        "profile",
+        "selectedTheme",
+        "selectedFont"
+    ];
+
+    oldData.forEach(key => {
+        localStorage.removeItem(key);
+    });
+
+    localStorage.setItem("notaResetVersion", no",notaResetVersion);}
+
+
+
+
 const signupForm = document.getElementById("signupForm");
-const loginForm = document.getElementById("loginForm");
 
 if (signupForm) {
     signupForm.addEventListener("submit", function(event) {
+
         event.preventDefault();
 
-        const name = document.getElementById("signupName").value.trim();
-        const email = document.getElementById("signupEmail").value.trim();
-        const password = document.getElementById("signupPassword").value;
-        const confirmPassword = document.getElementById("confirmPassword").value;
+        const fullname = document.getElementById("signup-fullname").value.trim();
+        const email = document.getElementById("signup-email").value.trim();
+        const username = document.getElementById("signup-username").value.trim();
+        const password = document.getElementById("signup-password").value;
+        const confirmPassword = document.getElementById("signup-confirm-password").value;
 
-        if (!name || !email || !password || !confirmPassword) {
-            alert("Please complete all fields.");
-            return;
-        }
+        const message = document.getElementById("signup-message");
 
         if (password !== confirmPassword) {
-            alert("Passwords do not match.");
+            message.textContent = "Passwords do not match.";
             return;
         }
 
         let users = JSON.parse(localStorage.getItem("users")) || [];
 
-        const existingUser = users.find(function(user) {
-            return user.email.toLowerCase() === email.toLowerCase();
-        });
+        const existingUser = users.find(user =>
+            user.username.toLowerCase() === username.toLowerCase() ||
+            user.email.toLowerCase() === email.toLowerCase()
+        );
 
         if (existingUser) {
-            alert("An account with this email already exists.");
+            message.textContent = "This username or email is already registered.";
             return;
         }
 
-        users.push({
-            name: name,
+        const newUser = {
+            fullname: fullname,
             email: email,
+            username: username,
             password: password
-        });
+        };
+
+        users.push(newUser);
 
         localStorage.setItem("users", JSON.stringify(users));
 
-        alert("Account created successfully! Please log in.");
+        message.style.color = "green";
+        message.textContent = "Account created successfully! You can now log in.";
 
-        window.location.href = "log-in.html";
+        signupForm.reset();
+
+        setTimeout(() => {
+            document.getElementById("signup-panel").hidden = true;
+            document.getElementById("login-panel").hidden = false;
+        }, 1200);
+
     });
 }
 
-
-if (loginForm) {
-    loginForm.addEventListener("submit", function(event) {
-        event.preventDefault();
-
-        const email = document.getElementById("loginEmail").value.trim();
-        const password = document.getElementById("loginPassword").value;
-
-        const users = JSON.parse(localStorage.getItem("users")) || [];
-
-        const matchedUser = users.find(function(user) {
-            return user.email.toLowerCase() === email.toLowerCase()
-                && user.password === password;
-        });
-
-        if (!matchedUser) {
-            alert("Incorrect email or password.");
-            return;
-        }
-
-        localStorage.setItem("loggedInUser", JSON.stringify({
-            name: matchedUser.name,
-            email: matchedUser.email
-        }));
-
-        window.location.href = "index.html";
-    });
-}
 
 
 /* ==================== LOGIN PROTECTION ==================== */
