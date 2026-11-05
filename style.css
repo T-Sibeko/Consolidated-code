@@ -169,13 +169,6 @@ textarea:focus-visible {
     color: var(--danger) !important;
 }
 
-.auth-demo-note {
-    text-align: center;
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 18px;
-}
-
 
 /* MAIN APPLICATION LAYOUT */
 
