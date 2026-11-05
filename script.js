@@ -381,35 +381,29 @@ if (jobForm) {
         const position = document.getElementById("position").value.trim();
         const company = document.getElementById("company").value.trim();
         const location = document.getElementById("job-location").value.trim();
+        const status = document.getElementById("status").value;
+        const type = document.getElementById("type").value;
+        const applicationDate = document.getElementById("applicationDate").value;
+
+        const fileInput = document.getElementById("application-cv");
+        const file = fileInput.files.length > 0 ? fileInput.files[0] : null;
 
         if (!position || !company || !location) {
-            showNotification(
-                "Please complete the position, company and location fields.",
-                "error"
-            );
+            showAppNotification("Please enter the position, company and job location.");
             return;
         }
-
-        const resumeInput = document.getElementById("resume");
-        const resume = resumeInput && resumeInput.files[0];
 
         const newJob = {
             id: crypto.randomUUID
                 ? crypto.randomUUID()
                 : String(Date.now()),
-
             position: position,
             company: company,
             location: location,
-
-            status: document.getElementById("status").value,
-
-            type: document.getElementById("type").value,
-
-            applicationDate:
-                document.getElementById("applicationDate").value,
-
-            resume: resume ? resume.name : "No File Uploaded"
+            status: status,
+            type: type,
+            applicationDate: applicationDate,
+            resume: file ? file.name : "No File Uploaded"
         };
 
         jobs.push(newJob);
@@ -418,9 +412,11 @@ if (jobForm) {
         renderJobs();
         jobForm.reset();
 
-        showNotification("Application added successfully.", "success");
+        showAppNotification("Application added successfully!");
     });
 }
+
+            
 
 
 /* ==================== DELETE APPLICATION ==================== */

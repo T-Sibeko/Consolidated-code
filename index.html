@@ -469,82 +469,71 @@
 
         </section>
 
+<!-- ADD APPLICATION -->
 
-        <!-- ADD APPLICATION -->
-        <section class="page-section" id="add-application">
+<div class="job-form">
 
-            <p class="eyebrow">Add a new job application to your tracker</p>
-            <h1>My Job Applications</h1>
+    <h2>Add Job</h2>
 
-            <div class="job-form p-4">
+    <form id="jobForm">
 
-                <h2 class="mb-4">Add Job</h2>
+        <div class="app-form-grid">
 
-                <form id="jobForm">
-                    <div class="row g-3">
-
-                        <div class="col-md-4">
-                            <label class="form-label" for="position">Position</label>
-                            <input type="text" class="form-control" id="position">
-                        </div>
-
-                        <div class="col-md-4">
-                            <label class="form-label" for="company">Company</label>
-                            <input type="text" class="form-control" id="company">
-                        </div>
-
-                        <div class="col-md-4">
-                            <label class="form-label" for="job-location">
-                                Job Location
-                            </label>
-                            <input type="text" class="form-control" id="job-location">
-                        </div>
-
-                        <div class="col-md-4">
-                            <label class="form-label" for="status">Job Status</label>
-                            <select class="form-select" id="status">
-                                <option>Applied</option>
-                                <option>Interview</option>
-                                <option>Offer</option>
-                                <option>Rejected</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-4">
-                            <label class="form-label" for="type">Job Type</label>
-                            <select class="form-select" id="type">
-                                <option>Full-time</option>
-                                <option>Part-time</option>
-                                <option>Remote</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-4">
-                            <label class="form-label" for="applicationDate">
-                                Application Date
-                            </label>
-                            <input type="date" class="form-control"
-                                id="applicationDate">
-                        </div>
-
-                        <div class="col-md-8">
-                            <label class="form-label" for="application-cv">
-                                Upload CV
-                            </label>
-                            <input type="file" class="form-control"
-                                id="application-cv" accept=".pdf,.doc,.docx">
-                        </div>
-
-                        <div class="col-md-4 d-flex align-items-end">
-                            <button type="submit" class="btn submit-btn w-100">
-                                Add Job
-                            </button>
-                        </div>
-
-                    </div>
-                </form>
-
+            <div class="app-form-field">
+                <label for="position">Position</label>
+                <input type="text" id="position" placeholder="e.g. Auditor" required>
             </div>
+
+            <div class="app-form-field">
+                <label for="company">Company</label>
+                <input type="text" id="company" placeholder="e.g. Standard Bank" required>
+            </div>
+
+            <div class="app-form-field">
+                <label for="job-location">Job Location</label>
+                <input type="text" id="job-location" placeholder="e.g. Johannesburg">
+            </div>
+
+            <div class="app-form-field">
+                <label for="status">Job Status</label>
+                <select id="status">
+                    <option>Applied</option>
+                    <option>Interview</option>
+                    <option>Offer</option>
+                    <option>Rejected</option>
+                </select>
+            </div>
+
+            <div class="app-form-field">
+                <label for="type">Job Type</label>
+                <select id="type">
+                    <option>Full-time</option>
+                    <option>Part-time</option>
+                    <option>Remote</option>
+                </select>
+            </div>
+
+            <div class="app-form-field">
+                <label for="applicationDate">Application Date</label>
+                <input type="date" id="applicationDate">
+            </div>
+
+            <div class="app-form-field upload-field">
+                <label for="application-cv">Upload CV</label>
+                <input type="file" id="application-cv" accept=".pdf,.doc,.docx">
+            </div>
+
+            <div class="app-form-submit">
+                <button type="submit" class="submit-btn">Add Job</button>
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+      
 
 
             <!-- APPLICATION SEARCH AND FILTER -->

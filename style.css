@@ -894,6 +894,84 @@ h4 {
 }
 
 
+.job-form {
+    width: 100%;
+    padding: 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    margin-bottom: 25px;
+}
+
+.job-form h2 {
+    margin-bottom: 25px;
+    font-size: 22px;
+}
+
+.app-form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px 25px;
+    align-items: end;
+}
+
+.app-form-field {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 8px;
+}
+
+.app-form-field label {
+    display: block;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.app-form-field input,
+.app-form-field select {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    height: 48px;
+    padding: 10px 13px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 14px;
+}
+
+.app-form-field input:focus,
+.app-form-field select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(109, 169, 165, 0.12);
+}
+
+.app-form-field input[type="file"] {
+    height: 48px;
+    padding: 9px;
+    font-size: 13px;
+}
+
+.app-form-submit {
+    display: flex;
+    align-items: end;
+    height: 48px;
+}
+
+.app-form-submit .submit-btn {
+    width: 100%;
+    height: 48px;
+    white-space: nowrap;
+}
+
+
+
 /* SETTINGS */
 
 .theme-options {
@@ -1150,5 +1228,27 @@ body[data-font="morden"] {
 
     .resume-actions button {
         width: 100%;
+    }
+}
+
+
+@media (max-width: 900px) {
+    .app-form-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 550px) {
+    .job-form {
+        padding: 18px;
+    }
+
+    .app-form-grid {
+        grid-template-columns: 1fr;
+        gap: 17px;
+    }
+
+    .app-form-submit {
+        height: auto;
     }
 }
