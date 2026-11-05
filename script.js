@@ -135,18 +135,35 @@ navLinks.forEach(function(button) {
 
 /* ==================== SIDEBAR ==================== */
 
-const sidebar = document.querySelector(".sidenavbar");
 const sidebarToggle = document.getElementById("sidebar-toggle");
+const appLayout = document.querySelector(".app-layout");
 
-if (sidebar && sidebarToggle) {
+if (sidebarToggle && appLayout) {
+
     sidebarToggle.addEventListener("click", function() {
-        sidebar.classList.toggle("collapsed");
 
-        const collapsed = sidebar.classList.contains("collapsed");
+        appLayout.classList.toggle("sidebar-collapsed");
 
-        sidebarToggle.setAttribute("aria-expanded", !collapsed);
+        const isCollapsed = appLayout.classList.contains("sidebar-collapsed");
+
+        sidebarToggle.setAttribute("aria-expanded", !isCollapsed);
+
+        sidebarToggle.setAttribute(
+            "aria-label",
+            isCollapsed ? "Expand navigation" : "Collapse navigation"
+        );
+
     });
+
 }
+
+
+
+
+
+
+
+
 
 
 /* ==================== LOGOUT ==================== */
